@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">dc-stress</string>
+    <string name="nuve" />
+    <string name="musica" />
+    <string name="ejercicios" />
+    <string name="caritaFeliz" />
+    <string name="title_activity_musica_">Musica_Activity</string>
+    <string name="title_activity_ejercicios">Ejercicios</string>
+</resources>

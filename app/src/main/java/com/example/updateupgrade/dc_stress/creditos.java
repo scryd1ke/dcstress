@@ -21,5 +21,14 @@ public class creditos extends AppCompatActivity {
                 startActivityForResult(intent2, 0);
             }
         });
+
+        Button btn3 = (Button) findViewById(R.id.btnVolver);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(v.getContext(), MainActivity.class);
+                startActivityForResult(intent3, 0);
+            }
+        });
     }
 }

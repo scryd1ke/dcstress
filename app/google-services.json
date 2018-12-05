@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "774593353819",
+    "firebase_url": "https://dcstress-899ef.firebaseio.com",
+    "project_id": "dcstress-899ef",
+    "storage_bucket": "dcstress-899ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774593353819:android:825d43b2f36775c4",
+        "android_client_info": {
+          "package_name": "com.example.updateupgrade.dc_stress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774593353819-d7a64e0fceam184ehqshv1ol1jjhc27e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.updateupgrade.dc_stress",
+            "certificate_hash": "eee9e32bc8a1d0146da78f88abf6a99735624091"
+          }
+        },
+        {
+          "client_id": "774593353819-6hn0p4ms572iiafi7re8blqf63pq3rj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqEm2XBvCZDgF9h_DHtKKzj_Ey9fEdkmo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774593353819-6hn0p4ms572iiafi7re8blqf63pq3rj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

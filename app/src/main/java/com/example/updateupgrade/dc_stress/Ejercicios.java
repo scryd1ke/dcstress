@@ -44,7 +44,7 @@ public class Ejercicios extends AppCompatActivity {
         videoView = (VideoView) findViewById(R.id.video_view);
 
         Uri uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
-        //Uri uri = Uri.parse("");
+        //Uri uri = Uri.parse("http://algun video de youtube");
         videoView.setMediaController((new MediaController(this)));
         videoView.setVideoURI(uri);
         videoView.requestFocus();

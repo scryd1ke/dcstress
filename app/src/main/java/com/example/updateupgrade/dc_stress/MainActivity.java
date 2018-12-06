@@ -21,15 +21,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-
-private StorageReference mStorageRef;
+ //FD - REFENCIA A FIREBASE STORAGE
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
 
         ImageButton btn1 = (ImageButton) findViewById(R.id.btnMusica);
@@ -67,7 +70,31 @@ private StorageReference mStorageRef;
                 startActivityForResult(intent, 0);
             }
         });
+//FD -  DESCARGANDO ARCHIVOS DESDE FIREBASE CON EL ASSISTENTE
 
+        //Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+        StorageReference riversRef = storageReference.child("images/rivers.jpg");
+
+        File localFile = null;
+        try {
+            localFile = File.createTempFile("images", "jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        riversRef.getFile(localFile)
+                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Successfully downloaded data to local file
+                        // ...
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle failed download
+                // ...
+            }
+        });
 
 
 

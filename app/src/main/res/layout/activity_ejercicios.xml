@@ -13,8 +13,11 @@
         android:layout_height="320dp">
 
         <VideoView
-            android:layout_width="match_parent"
-            android:layout_height="283dp" />
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
 
     </LinearLayout>
 

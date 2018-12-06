@@ -16,8 +16,13 @@ import android.widget.VideoView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+
 public class Ejercicios extends AppCompatActivity {
-    private StorageReference mStorageRef;
+    // CREACION DE INSTANCIA DE FIREBASE
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    //private StorageReference mStorageRef;
+    // Create a storage reference from our app
+    StorageReference storageRef = storage.getReference();
     VideoView videoView;
 
     @Override

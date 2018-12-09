@@ -22,7 +22,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-
+        // FUNCION PARA REBIR MENSAJES AUN CUANDO LA APLICACION ESTA CERRADA
         if (remoteMessage.getData().isEmpty())
             shownotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
         else

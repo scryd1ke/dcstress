@@ -35,7 +35,7 @@ public class Ejercicios extends AppCompatActivity {
     private ListView listView;
     private TextView tv1;
 
-    private String[] VIDEOS = { "Video 1", "Video 2", "Video 3", "Video 4 ", "Video 5"};
+    private String[] VIDEOS = { "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4 ", "Ejercicio 5"};
 
     private String[] URISS = {  "https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/ejercicios%2Fejercicio1.mp4?alt=media&token=3d323a34-611b-4a9f-8262-e77bef2fc070",
             "https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/ejercicios%2Fejercicio2.mp4?alt=media&token=a9100de1-56cd-4734-9c10-daa57f8e2077",

@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
-    tools:context=".Meditacion">
+    android:orientation="vertical"
+    tools:context=".reproduccion_med1">
 
-    <ListView
-        android:id="@+id/lstDatos"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="7dp" />
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/img_relax" />
 </LinearLayout>

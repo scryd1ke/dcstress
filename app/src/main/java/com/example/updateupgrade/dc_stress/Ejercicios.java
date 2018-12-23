@@ -9,12 +9,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 
 public class Ejercicios extends AppCompatActivity {
@@ -25,6 +29,7 @@ public class Ejercicios extends AppCompatActivity {
     StorageReference storageRef = storage.getReference();
     VideoView videoView;
 
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,7 @@ public class Ejercicios extends AppCompatActivity {
                 startActivityForResult(intent2, 0);
             }
         });
+        /*   VIDEO DE PRUEBA AUTOMATICO
 
         videoView = (VideoView) findViewById(R.id.video_view);
 
@@ -49,8 +55,21 @@ public class Ejercicios extends AppCompatActivity {
         videoView.setVideoURI(uri);
         videoView.requestFocus();
         videoView.start();
+       */
 
+        listView=(ListView) findViewById(R.id.listview);
+        ArrayList<String> arrayList=new ArrayList<>();
+
+        arrayList.add("Video 1");
+        arrayList.add("Video 2");
+        arrayList.add("Video 3");
+        arrayList.add("Video 4");
+        arrayList.add("Video 5");
+
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+        listView.setAdapter(arrayAdapter);
 
     }
+
 
 }

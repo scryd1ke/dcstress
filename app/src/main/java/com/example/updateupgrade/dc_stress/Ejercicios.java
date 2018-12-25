@@ -55,7 +55,7 @@ public class Ejercicios extends AppCompatActivity {
         tv1=(TextView)findViewById(R.id.tv1);
         listView =(ListView)findViewById(R.id.listview);
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, VIDEOS);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter); //LLENA O POBLA LA LISTA
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

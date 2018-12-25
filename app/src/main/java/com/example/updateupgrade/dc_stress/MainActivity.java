@@ -1,9 +1,16 @@
 package com.example.updateupgrade.dc_stress;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -99,4 +106,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+// LANZA NOTIFICACIONES AL SISTEMA ANDROID
+
+    public void notificar(View view){
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "my_channel_01")
+                .setSmallIcon(android.R.drawable.stat_sys_warning)
+                .setContentTitle("Titulo de la notificacion")
+                .setContentText("Texto de la notificacion")
+                .setTicker("Alerta!!")
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setAutoCancel(true);
+
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+1111111"));
+        PendingIntent dialPendinIntent = PendingIntent.getActivity(this,0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(dialPendinIntent);
+
+        NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(this);
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            String name ="My Channel";
+            String description = "Channle Description";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("my_channel_01", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
+        }
+        mNotificationManager.notify(1, mBuilder.build());
+
+
+    }
+
+    //GENERA NOTIFICACIONES SEGUN TIEMPO ESTABLECIDO Y LLAMA A LA FUNCION NOTIFICAR
+
 }

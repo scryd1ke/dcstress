@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton btn4 = (ImageButton) findViewById(R.id.btnCreditos);
+        ImageButton btn4 = (ImageButton) findViewById(R.id.btnCreditos);//
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), creditos.class);
+                Intent intent = new Intent(v.getContext(), creditos.class); //creditos.class
                 startActivityForResult(intent, 0);
             }
         });

@@ -36,6 +36,7 @@ public class Meditacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditacion);
 
+
         isplayingmed = false; //auziliar para el boton play_pause
 
         // ASIGNAMOS EL BOTON PLAY PAUSE
@@ -50,6 +51,7 @@ public class Meditacion extends AppCompatActivity {
 
         Adaptadorlist miadaptador = new Adaptadorlist(getApplicationContext(),Lista);
         listaDatos.setAdapter(miadaptador);
+
 
         listaDatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -8,6 +8,37 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:774593353819:android:48557aeef5a46041",
+        "android_client_info": {
+          "package_name": "com.dcstress.updateupgrade.dc_stress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774593353819-6hn0p4ms572iiafi7re8blqf63pq3rj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqEm2XBvCZDgF9h_DHtKKzj_Ey9fEdkmo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:774593353819:android:825d43b2f36775c4",
         "android_client_info": {
           "package_name": "com.example.updateupgrade.dc_stress"

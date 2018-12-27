@@ -1,10 +1,9 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
 
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;

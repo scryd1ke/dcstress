@@ -1,4 +1,4 @@
-package com.example.updateupgrade.dc_stress.Service;
+package com.dcstress.updateupgrade.dc_stress.Service;
 
 
 import android.app.Notification;
@@ -10,7 +10,7 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.example.updateupgrade.dc_stress.R;
+import com.dcstress.updateupgrade.dc_stress.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -36,7 +36,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         String body = data.get("body").toString();
 
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        String NOTIFICATION_CHANNEL_ID = "com.example.updateupgrade.dc_stress"; //NO SE DE DONDE SALE TEST
+        String NOTIFICATION_CHANNEL_ID = "com.dcstress.updateupgrade.dc_stress"; //NO SE DE DONDE SALE TEST
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
@@ -70,7 +70,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
 
     private void shownotification(String title, String body) {
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        String NOTIFICATION_CHANNEL_ID = "com.example.updateupgrade.dc_stress"; //NO SE DE DONDE SALE TEST
+        String NOTIFICATION_CHANNEL_ID = "com.dcstress.updateupgrade.dc_stress"; //NO SE DE DONDE SALE TEST
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {

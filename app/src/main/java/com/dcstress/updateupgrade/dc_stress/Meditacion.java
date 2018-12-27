@@ -1,6 +1,5 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.List;
-
-import static com.example.updateupgrade.dc_stress.R.id.media_actions;
-import static com.example.updateupgrade.dc_stress.R.id.play_pause;
 
 public class Meditacion extends AppCompatActivity {
 

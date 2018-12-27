@@ -1,4 +1,4 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
 import android.content.Intent;
 import android.net.Uri;

@@ -1,4 +1,4 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.updateupgrade.dc_stress", appContext.getPackageName());
+        assertEquals("com.dcstress.updateupgrade.dc_stress", appContext.getPackageName());
     }
 }

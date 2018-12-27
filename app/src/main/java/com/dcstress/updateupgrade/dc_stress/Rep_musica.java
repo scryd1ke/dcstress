@@ -1,4 +1,4 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.security.PublicKey;
 
 public class Rep_musica extends AppCompatActivity {
 

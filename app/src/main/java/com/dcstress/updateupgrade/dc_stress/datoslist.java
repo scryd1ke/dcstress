@@ -1,4 +1,4 @@
-package com.example.updateupgrade.dc_stress;
+package com.dcstress.updateupgrade.dc_stress;
 
 import java.io.Serializable;
 

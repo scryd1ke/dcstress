@@ -13,7 +13,7 @@ public class creditos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creditos);
 
-        Button btn2 = (Button) findViewById(R.id.btnVolver);
+      /*  Button btn2 = (Button) findViewById(R.id.btnVolver);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +29,6 @@ public class creditos extends AppCompatActivity {
                 Intent intent3 = new Intent(v.getContext(), MainActivity.class);
                 startActivityForResult(intent3, 0);
             }
-        });
+        });*/
     }
 }

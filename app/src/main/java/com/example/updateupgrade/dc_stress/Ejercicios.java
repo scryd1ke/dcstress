@@ -3,6 +3,7 @@ package com.example.updateupgrade.dc_stress;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -47,9 +48,9 @@ public class Ejercicios extends AppCompatActivity {
 
     //private Uri videoUri;
 
-    private boolean isPlaying;
-    private int current;
-    private int duration;
+    private boolean isPlaying =false;
+    private int current = 0;
+    private int duration = 0;
 
     //FIN BOTONES DE CONTROL
 
@@ -76,6 +77,7 @@ public class Ejercicios extends AppCompatActivity {
         setContentView(R.layout.activity_ejercicios);
 
 
+
         isPlaying = false;
 
         videoView = (VideoView)findViewById(R.id.video_view);
@@ -83,7 +85,9 @@ public class Ejercicios extends AppCompatActivity {
         currentTimer= (TextView)findViewById(R.id.currenTimer2);
         durationTimer = (TextView)findViewById(R.id.durationTimer2);
         currentProgress = (ProgressBar)findViewById(R.id.videoProgress2);
+        currentProgress.setMax(100);
         bufferProgress = (ProgressBar) findViewById(R.id.bufferProgress2);
+        bufferProgress.setVisibility(View.INVISIBLE);
 
         // VINCULACION DEL LISTVIEW CON EL ADAPTADOR MAS UN AUXILIAR PARA RESCATAR LA DIRECCION HTTP
         tv1=(TextView)findViewById(R.id.tv1);
@@ -95,6 +99,8 @@ public class Ejercicios extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int posicion, long id) {
+                bufferProgress.setVisibility(View.VISIBLE);
+                isPlaying = false;
 
                 tv1.setText(URISS[posicion]);
                 Uri uri = Uri.parse((String) tv1.getText());
@@ -141,6 +147,7 @@ public class Ejercicios extends AppCompatActivity {
 
                 isPlaying = true; //AUXILIAR PARA ENTRAR Y SALIR DEL CICLO IF PARA CAMBIAR EL ESTADO DEL BOTON  PLAY_PAUSA
                 playBtn.setImageResource(R.drawable.img_pause);
+                new videoProgress2().execute();
 
                 playBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -158,45 +165,73 @@ public class Ejercicios extends AppCompatActivity {
                     }
                 });
 
-
             }
+
+
+
         });
     }
 
-
-// FIN EXPORTACION LISTVIEW AUTOMATICO
-
-
-
-
-        //mStorageRef = FirebaseStorage.getInstance().getReference();
-
-  /*   VIDEO DE PRUEBA AUTOMATICO
-
-        videoView = (VideoView) findViewById(R.id.video_view);
-
-        Uri uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4");
-        //Uri uri = Uri.parse("http://algun video de youtube");
-        videoView.setMediaController((new MediaController(this)));
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.start();
-       */
-
-
-/* BOTON DE PRUEBA VOLVER
-
-        Button btn2 = (Button) findViewById(R.id.btnVolver);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent (v.getContext(), MainActivity.class);
-                startActivityForResult(intent2, 0);
-            }
-        });
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isPlaying = false;
+        videoView.stopPlayback();
 
     }
-    */ // FIN BOTON DE PRUEBA VOLVER
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isPlaying = false;
+        videoView.stopPlayback();
+    }
+
+    public class videoProgress2 extends AsyncTask<Void, Integer, Void>{
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            do {
+
+                if (isPlaying) {
+                    current = videoView.getCurrentPosition() / 1000;
+                    //publishProgress(current);
+                    try {
+
+                        int currentPercent = current * 100 / duration;
+                        publishProgress(currentPercent);
+
+                    } catch (Exception e) {
+                    }
+                }
+            }while(currentProgress.getProgress() <= 100);
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+               // currentProgress.setProgress(values[0]);
+            try {
+
+                int currentPercent = values[0] * 100/duration;
+                currentProgress.setProgress(currentPercent);
+
+                String currentString = String.format("%02d:%02d", values[0] / 60, values[0] % 60);
+
+                currentTimer.setText(currentString);
+
+
+
+            }catch (Exception e){
+
+
+            }
+
+
+        }
+    }
 
 }

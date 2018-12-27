@@ -29,6 +29,7 @@ public class reproduccion_med1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproduccion_med1);
+        /*
 
         isPlaying = false;
 
@@ -62,7 +63,7 @@ public class reproduccion_med1 extends AppCompatActivity {
                     playBtn.setImageResource(R.drawable.img_pause);
                 }
             }
-        });
+        });*/
 
     }// FIN OnCreate
 

@@ -17,7 +17,7 @@ public class Rep_musica extends AppCompatActivity {
     private Button nextsong;
 
     // ASIGNANDO MUSICAS
-    int canciones[]={R.raw.mnaturaleza,R.raw.angel_de_agua,R.raw.mprofundo,R.raw.mrelajarse,R.raw.horizonte,R.raw.mistico};
+    int canciones[]={R.raw.mnaturaleza,R.raw.angel_de_agua,R.raw.mrelajarse,R.raw.horizonte,R.raw.mistico};
     int index=0;
 
 
@@ -64,7 +64,7 @@ public class Rep_musica extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 index++;
-                if (index>5)index=0;
+                if (index>4)index=0;
                 mp.stop();
                 mp = MediaPlayer.create(getApplication(), canciones[index]);
                 mp.start();

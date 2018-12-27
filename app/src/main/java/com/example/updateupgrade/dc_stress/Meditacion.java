@@ -22,18 +22,21 @@ import static com.example.updateupgrade.dc_stress.R.id.play_pause;
 
 public class Meditacion extends AppCompatActivity {
 
+    private boolean isplayingmed = false;
     ListView listaDatos; // CREAMOS LA VISTA DE LISTA EN EL LAYOUT
     ArrayList<datoslist> Lista; // CREAMOS LA LISTA PARA AGREGAR ITEMS
     String URISS; //CREAMOS EL CONTENEDOR DE URLs
 
 
-    MediaPlayer mediaPlayer; // CREAMOS EL MEDIAPLAYER mediaplayer
+    MediaPlayer mediaPlayer = new MediaPlayer(); // CREAMOS EL MEDIAPLAYER mediaplayer
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditacion);
+
+        isplayingmed = false; //auziliar para el boton play_pause
 
         // ASIGNAMOS EL BOTON PLAY PAUSE
         final Button play_pause = (Button) findViewById(R.id.play_pause); // CREAMOS DE BOTON PLAY PLUSE
@@ -63,10 +66,11 @@ public class Meditacion extends AppCompatActivity {
                 muestra.setText(detalle);
 
                 try {
-                    MediaPlayer mediaPlayer = new MediaPlayer();
+                   // MediaPlayer mediaPlayer = new MediaPlayer();
                     mediaPlayer.setDataSource(detalle);
                     mediaPlayer.prepare();
                     mediaPlayer.start();
+                    isplayingmed=true;
                     play_pause.setBackgroundResource(R.drawable.img_pause);
                     Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
 
@@ -96,15 +100,17 @@ public class Meditacion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mediaPlayer.isPlaying()){
+                if (isplayingmed){
                     mediaPlayer.pause();
                     play_pause.setBackgroundResource(R.drawable.img_play);
                     Toast.makeText(Meditacion.this, "Pausa", Toast.LENGTH_SHORT).show();
+                    isplayingmed = false;
                 }
                 else {
                     mediaPlayer.start();
                     play_pause.setBackgroundResource(R.drawable.img_pause);
                     Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
+                    isplayingmed=true;
                 }
             }
         });

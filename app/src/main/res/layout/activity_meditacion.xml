@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -11,7 +11,7 @@
     <ListView
         android:id="@+id/lstDatos"
         android:layout_width="match_parent"
-        android:layout_height="426dp"
+        android:layout_height="464dp"
         android:dividerHeight="7dp" />
 
     <RelativeLayout
@@ -28,12 +28,13 @@
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/play_pause"
             android:layout_width="wrap_content"
-            android:layout_height="64dp"
+            android:layout_height="73dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -42,10 +43,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="147dp"
             android:layout_marginLeft="147dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="23dp"
             android:layout_marginEnd="145dp"
             android:layout_marginRight="145dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="7dp"
             android:background="@drawable/img_play" />
 
     </RelativeLayout>

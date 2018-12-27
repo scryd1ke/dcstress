@@ -22,18 +22,22 @@ import static com.example.updateupgrade.dc_stress.R.id.play_pause;
 
 public class Meditacion extends AppCompatActivity {
 
+    private boolean isplayingmed = false;
     ListView listaDatos; // CREAMOS LA VISTA DE LISTA EN EL LAYOUT
     ArrayList<datoslist> Lista; // CREAMOS LA LISTA PARA AGREGAR ITEMS
     String URISS; //CREAMOS EL CONTENEDOR DE URLs
 
 
-    MediaPlayer mediaPlayer; // CREAMOS EL MEDIAPLAYER mediaplayer
+    MediaPlayer mediaPlayer = new MediaPlayer(); // CREAMOS EL MEDIAPLAYER mediaplayer
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditacion);
+
+
+        isplayingmed = false; //auziliar para el boton play_pause
 
         // ASIGNAMOS EL BOTON PLAY PAUSE
         final Button play_pause = (Button) findViewById(R.id.play_pause); // CREAMOS DE BOTON PLAY PLUSE
@@ -42,11 +46,12 @@ public class Meditacion extends AppCompatActivity {
         Lista = new ArrayList<datoslist>();
 
         Lista.add(new datoslist(1, "Meditacion de 5 Minutos para mejorar tu salud","https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/meditacion%2Fmeditacion5min.mp4?alt=media&token=f27a0dc8-92de-4d46-b13d-48164db13a18", R.drawable.m3 ));
-        Lista.add(new datoslist(2, "Meditacion para quitar tensiones","Meditacion mas produnda para eliminar tensiones laborales", R.drawable.m1 ));
-        Lista.add(new datoslist(3, "Meditacion para relajarse","Meditacion para proporcionar un relajo adicional en tu jornada", R.drawable.m2 ));
+        Lista.add(new datoslist(2, "Meditacion para quitar tensiones","https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/meditacion%2Fmeditacion5minmp3.mp3?alt=media&token=9926a319-aed2-4c64-8bef-0b0719f876fb", R.drawable.m1 ));
+        Lista.add(new datoslist(3, "Meditacion de 3 Minutos para Relajarse","https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/meditacion%2FRelajacion3min.mp3?alt=media&token=bde4aba2-a758-45f1-9dda-a98046e21e56", R.drawable.m2 ));
 
         Adaptadorlist miadaptador = new Adaptadorlist(getApplicationContext(),Lista);
         listaDatos.setAdapter(miadaptador);
+
 
         listaDatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -63,10 +68,11 @@ public class Meditacion extends AppCompatActivity {
                 muestra.setText(detalle);
 
                 try {
-                    MediaPlayer mediaPlayer = new MediaPlayer();
+                   // MediaPlayer mediaPlayer = new MediaPlayer();
                     mediaPlayer.setDataSource(detalle);
                     mediaPlayer.prepare();
                     mediaPlayer.start();
+                    isplayingmed=true;
                     play_pause.setBackgroundResource(R.drawable.img_pause);
                     Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
 
@@ -96,15 +102,17 @@ public class Meditacion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (mediaPlayer.isPlaying()){
+                if (isplayingmed){
                     mediaPlayer.pause();
                     play_pause.setBackgroundResource(R.drawable.img_play);
                     Toast.makeText(Meditacion.this, "Pausa", Toast.LENGTH_SHORT).show();
+                    isplayingmed = false;
                 }
                 else {
                     mediaPlayer.start();
                     play_pause.setBackgroundResource(R.drawable.img_pause);
                     Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
+                    isplayingmed=true;
                 }
             }
         });

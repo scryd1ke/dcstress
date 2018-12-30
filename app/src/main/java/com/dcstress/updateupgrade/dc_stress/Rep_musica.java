@@ -57,20 +57,17 @@ public class Rep_musica extends AppCompatActivity {
         Toast.makeText(this, "Stop", Toast.LENGTH_SHORT).show();
     }
 
+
     public void nextsong (View view){
-        nextsong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                index++;
-                if (index>4)index=0;
-                mp.stop();
-                mp = MediaPlayer.create(getApplication(), canciones[index]);
-                mp.start();
 
-            }
-        });
+        index++;
+        if (index>4){
+            index=0;
+        }
 
-
+        mp.stop();
+        mp = MediaPlayer.create(getApplication(), canciones[index]);
+        mp.start();
         Toast.makeText(this, "Siguiente Pista", Toast.LENGTH_SHORT).show();
     }
 

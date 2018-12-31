@@ -11,31 +11,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 
 public class Meditacion extends AppCompatActivity {
 
-    private boolean isplayingmed = false;
+    private boolean isplayingmed;
     ListView listaDatos; // CREAMOS LA VISTA DE LISTA EN EL LAYOUT
     ArrayList<datoslist> Lista; // CREAMOS LA LISTA PARA AGREGAR ITEMS
     String URISS; //CREAMOS EL CONTENEDOR DE URLs
 
 
     MediaPlayer mediaPlayer = new MediaPlayer(); // CREAMOS EL MEDIAPLAYER mediaplayer
-
+    String detalle;
+    Button play_pause;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meditacion);
 
+        play_pause = (Button) findViewById(R.id.play_pause); // ASIGNAMOS EL BOTON PLAY PAUSE
 
-        isplayingmed = false; //auziliar para el boton play_pause
 
-        // ASIGNAMOS EL BOTON PLAY PAUSE
-        final Button play_pause = (Button) findViewById(R.id.play_pause); // CREAMOS DE BOTON PLAY PLUSE
         listaDatos = (ListView) findViewById(R.id.lstDatos);
-
         Lista = new ArrayList<datoslist>();
 
         Lista.add(new datoslist(1, "Meditacion de 5 Minutos para mejorar tu salud","https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/meditacion%2Fmeditacion5min.mp4?alt=media&token=f27a0dc8-92de-4d46-b13d-48164db13a18", R.drawable.m3 ));
@@ -50,65 +49,74 @@ public class Meditacion extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // COLOCAR AQUI CODIGO PARA REPRODUCTR EL ARCHIVO DE AUDIO STREAMING DESDE FIREBASE
-                //SEGUN LA POSICION DE LA LISTA
+                detalle = (String) Lista.get(position).getDetalle();
+                isplayingmed=true;
 
-               final String detalle = (String) Lista.get(position).getDetalle();
-
-                TextView muestra;
-                muestra = (TextView) findViewById(R.id.mostrar);
-
-                muestra.setText(detalle);
-
-                try {
-                   // MediaPlayer mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setDataSource(detalle);
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-                    isplayingmed=true;
-                    play_pause.setBackgroundResource(R.drawable.img_pause);
-                    Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
-
-                } catch (IllegalArgumentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (SecurityException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IllegalStateException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                iniciaReproduccion(detalle);
 
 
-
-
-            }
-        });
-
-// BOTONES DE CONTROL PARA EL MEDIA PLAYER
-        //play_pause = (Button) findViewById(R.id.play_pause);
-        play_pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (isplayingmed){
-                    mediaPlayer.pause();
-                    play_pause.setBackgroundResource(R.drawable.img_play);
-                    Toast.makeText(Meditacion.this, "Pausa", Toast.LENGTH_SHORT).show();
-                    isplayingmed = false;
-                }
-                else {
-                    mediaPlayer.start();
-                    play_pause.setBackgroundResource(R.drawable.img_pause);
-                    Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
-                    isplayingmed=true;
-                }
             }
         });
 
     }
+
+    private void iniciaReproduccion(String detalle) {
+        if (isplayingmed){
+
+
+            mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                public boolean onError(MediaPlayer mp, int what, int extra) {
+                    mp.reset();
+                    return false;
+                }
+            });
+
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                public void onPrepared(MediaPlayer mp) {
+                    mp.start();
+                }
+            });
+
+            try {
+                mediaPlayer.stop();
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(detalle);
+                this.mediaPlayer.prepareAsync();
+                isplayingmed=true;
+                play_pause.setBackgroundResource(R.drawable.img_pause);
+                Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
+                // mediaPlayer.start();
+            } catch (IllegalArgumentException e) {
+            } catch (IllegalStateException e) {
+            } catch (IOException e) {
+            }
+        }
+    }
+
+
+    //METODO PARA REPRODUCIR CANCIONES CUANDO SE PRESIONE UN ELEMENTO DE LA LISTA
+    public void play_pause (View view){
+
+        if (isplayingmed){
+
+            play_pause.setBackgroundResource(R.drawable.img_play);
+            Toast.makeText(Meditacion.this, "Pausa", Toast.LENGTH_SHORT).show();
+            isplayingmed = false;
+            mediaPlayer.pause();
+
+        }else {
+            mediaPlayer.start();
+            play_pause.setBackgroundResource(R.drawable.img_pause);
+            Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
+            isplayingmed=true;
+        }
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isplayingmed = false;
+        mediaPlayer.stop();
+    }
+
 }

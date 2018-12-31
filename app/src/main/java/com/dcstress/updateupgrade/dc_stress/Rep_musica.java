@@ -64,11 +64,17 @@ public class Rep_musica extends AppCompatActivity {
         if (index>4){
             index=0;
         }
+        if (mp == null) {
+            mp = MediaPlayer.create(getApplication(), canciones[index]);
+            mp.start();
+            Toast.makeText(this, "Siguiente Pista", Toast.LENGTH_SHORT).show();
+        }else{
+            mp.stop();
+            mp = MediaPlayer.create(getApplication(), canciones[index]);
+            mp.start();
+            Toast.makeText(this, "Siguiente Pista", Toast.LENGTH_SHORT).show();
+        }
 
-        mp.stop();
-        mp = MediaPlayer.create(getApplication(), canciones[index]);
-        mp.start();
-        Toast.makeText(this, "Siguiente Pista", Toast.LENGTH_SHORT).show();
     }
 
 }

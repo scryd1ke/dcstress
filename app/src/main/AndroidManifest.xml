@@ -20,12 +20,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.dcstress.updateupgrade.dc_stress.Musica_Activity"
-            android:label="@string/title_activity_musica_"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>/>
+        </activity><![CDATA[
+        />
+        ]]>
         <activity
             android:name="com.dcstress.updateupgrade.dc_stress.Ejercicios"
             android:label="@string/title_activity_ejercicios"

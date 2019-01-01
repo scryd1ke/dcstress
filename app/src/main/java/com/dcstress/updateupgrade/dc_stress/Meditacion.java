@@ -117,6 +117,7 @@ public class Meditacion extends AppCompatActivity {
         super.onBackPressed();
         isplayingmed = 0;
         mediaPlayer.stop();
+        mediaPlayer.release();
     }
 
 }

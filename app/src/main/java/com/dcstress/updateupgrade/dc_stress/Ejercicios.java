@@ -186,7 +186,7 @@ public class Ejercicios extends AppCompatActivity {
 
                 if (isPlaying) {
                     current = videoView.getCurrentPosition() / 1000;
-                    //publishProgress(current);
+                    publishProgress(current);// ESTO FUE LO ULTIMO QUE CAMBIE POR SI FALLA
                     try {
 
                         int currentPercent = current * 100 / duration;

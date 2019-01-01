@@ -42,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="20dp"
-                android:text="descripcion" />
+                android:text="descripcion"
+                android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

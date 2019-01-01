@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Meditacion extends AppCompatActivity {
 
-    private boolean isplayingmed;
+    int isplayingmed = 3; //0 = false; 1 = true; 3 = loquesea;
     ListView listaDatos; // CREAMOS LA VISTA DE LISTA EN EL LAYOUT
     ArrayList<datoslist> Lista; // CREAMOS LA LISTA PARA AGREGAR ITEMS
     String URISS; //CREAMOS EL CONTENEDOR DE URLs
@@ -50,7 +50,7 @@ public class Meditacion extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 detalle = (String) Lista.get(position).getDetalle();
-                isplayingmed=true;
+                isplayingmed=1;
 
                 iniciaReproduccion(detalle);
 
@@ -61,7 +61,7 @@ public class Meditacion extends AppCompatActivity {
     }
 
     private void iniciaReproduccion(String detalle) {
-        if (isplayingmed){
+        if (isplayingmed==1){
 
 
             mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
@@ -82,7 +82,7 @@ public class Meditacion extends AppCompatActivity {
                 mediaPlayer.reset();
                 mediaPlayer.setDataSource(detalle);
                 this.mediaPlayer.prepareAsync();
-                isplayingmed=true;
+                isplayingmed=1;
                 play_pause.setBackgroundResource(R.drawable.img_pause);
                 Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
                 // mediaPlayer.start();
@@ -97,25 +97,25 @@ public class Meditacion extends AppCompatActivity {
     //METODO PARA REPRODUCIR CANCIONES CUANDO SE PRESIONE UN ELEMENTO DE LA LISTA
     public void play_pause (View view){
 
-        if (isplayingmed){
+        if (isplayingmed==1){
 
             play_pause.setBackgroundResource(R.drawable.img_play);
             Toast.makeText(Meditacion.this, "Pausa", Toast.LENGTH_SHORT).show();
-            isplayingmed = false;
+            isplayingmed = 0;
             mediaPlayer.pause();
 
-        }else {
+        }else if (isplayingmed==0){
             mediaPlayer.start();
             play_pause.setBackgroundResource(R.drawable.img_pause);
             Toast.makeText(Meditacion.this, "Play", Toast.LENGTH_SHORT).show();
-            isplayingmed=true;
-        }
+            isplayingmed=1;
+        }else{}
 
     }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        isplayingmed = false;
+        isplayingmed = 0;
         mediaPlayer.stop();
     }
 

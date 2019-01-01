@@ -46,6 +46,7 @@ public class Adaptadorlist extends BaseAdapter {
         TextView titulo = (TextView) vista.findViewById(R.id.textView4);
         TextView detalle = (TextView) vista.findViewById(R.id.textView3);
 
+
         titulo.setText(ListaObjetos.get(position).getTitulo().toString());
         detalle.setText(ListaObjetos.get(position).getDetalle().toString());
         imagen.setImageResource(ListaObjetos.get(position).getImagen());

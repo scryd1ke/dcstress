@@ -103,6 +103,41 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    // LANZA NOTIFICACIONES AL SISTEMA ANDROID
+
+    public void notificar(View view){
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "my_channel_01")
+                .setSmallIcon(android.R.drawable.stat_sys_warning)
+                .setContentTitle("Titulo de la notificacion")
+                .setContentText("Texto de la notificacion")
+                .setTicker("Alerta!!")
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setAutoCancel(true);
+
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+1111111"));
+        PendingIntent dialPendinIntent = PendingIntent.getActivity(this,0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(dialPendinIntent);
+
+        NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(this);
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            String name ="My Channel";
+            String description = "Channle Description";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("my_channel_01", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
+        }
+        mNotificationManager.notify(1, mBuilder.build());
+
+
+    }
+
     //GENERA NOTIFICACIONES SEGUN TIEMPO ESTABLECIDO Y LLAMA A LA FUNCION NOTIFICAR
 
 }

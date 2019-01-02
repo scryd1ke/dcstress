@@ -51,7 +51,7 @@ public class Ejercicios extends AppCompatActivity {
     private ListView listView;
     private TextView tv1;
 
-    private String[] VIDEOS = { "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4 ", "Ejercicio 5"};
+    private String[] VIDEOS = { "Ejercicio 1 - Activar miembros inferiores.", "Ejercicio 2 - Estiramiento de cadera y espalda.", "Ejercicio 3 - Calentamiento de hombros.", "Ejercicio 4 - Calentamiento articular. ", "Ejercicio 5- Estiramiento de manos."};
 
     private String[] URISS = {  "https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/ejercicios%2Fejercicio1.mp4?alt=media&token=3d323a34-611b-4a9f-8262-e77bef2fc070",
             "https://firebasestorage.googleapis.com/v0/b/dcstress-899ef.appspot.com/o/ejercicios%2Fejercicio2.mp4?alt=media&token=a9100de1-56cd-4734-9c10-daa57f8e2077",

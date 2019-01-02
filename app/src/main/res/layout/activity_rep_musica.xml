@@ -7,6 +7,18 @@
     android:background="@drawable/fondo"
     tools:context=".Rep_musica">
 
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Disfruta la Musica"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textSize="35sp"
+        android:textStyle="bold|italic" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="350dp"

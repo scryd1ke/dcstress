@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:context=".Ejercicios">
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="439dp"
+        android:layout_weight="1"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Lista de Ejercicios"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textSize="35sp"
+        android:textStyle="bold|italic" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

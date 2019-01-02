@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -30,7 +31,7 @@ public class Ejercicios extends AppCompatActivity {
 
     // BOTONES DE CONTROL
     private VideoView videoView;
-    private ImageView playBtn;
+    //private ImageView playBtn;
     private TextView currentTimer;
     private TextView durationTimer;
     private ProgressBar currentProgress;
@@ -71,11 +72,11 @@ public class Ejercicios extends AppCompatActivity {
         isPlaying = false;
 
         videoView = (VideoView)findViewById(R.id.video_view);
-        playBtn = (ImageView)findViewById(R.id.playBtn2);
-        currentTimer= (TextView)findViewById(R.id.currenTimer2);
-        durationTimer = (TextView)findViewById(R.id.durationTimer2);
-        currentProgress = (ProgressBar)findViewById(R.id.videoProgress2);
-        currentProgress.setMax(100);
+       // playBtn = (ImageView)findViewById(R.id.playBtn2);
+        //currentTimer= (TextView)findViewById(R.id.currenTimer2);
+        //durationTimer = (TextView)findViewById(R.id.durationTimer2);
+        //currentProgress = (ProgressBar)findViewById(R.id.videoProgress2);
+        //currentProgress.setMax(100);
         bufferProgress = (ProgressBar) findViewById(R.id.bufferProgress2);
         bufferProgress.setVisibility(View.INVISIBLE);
 
@@ -84,6 +85,12 @@ public class Ejercicios extends AppCompatActivity {
         listView =(ListView)findViewById(R.id.listview);
         ArrayAdapter <String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, VIDEOS);
         listView.setAdapter(adapter); //LLENA O POBLA LA LISTA
+
+        //NUEVO CONTROL DE VIDEO
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        //FIN NUEVO CONTROL DE VIDEO
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //METODO QUE ESTABLECE UNA VEZ PRESIONADO UN ITEM DE LA LISTA SE EJECUTE UN VIDEO
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -126,7 +133,7 @@ public class Ejercicios extends AppCompatActivity {
                     public void onPrepared(MediaPlayer mediaplayer) {
                         duration = mediaplayer.getDuration()/1000;
                         String durationString = String.format("%02d:%02d", duration / 60, duration % 60);
-                        durationTimer.setText(durationString);
+                        //durationTimer.setText(durationString);
                     }
                 });
 
@@ -134,7 +141,7 @@ public class Ejercicios extends AppCompatActivity {
                 //FIN SETEO DURACION VIDEO
 
                 videoView.start();
-
+/*
                 isPlaying = true; //AUXILIAR PARA ENTRAR Y SALIR DEL CICLO IF PARA CAMBIAR EL ESTADO DEL BOTON  PLAY_PAUSA
                 playBtn.setImageResource(R.drawable.img_pause);
                 new videoProgress2().execute();
@@ -153,8 +160,7 @@ public class Ejercicios extends AppCompatActivity {
                             playBtn.setImageResource(R.drawable.img_pause);
                         }
                     }
-                });
-
+                });*/
             }
 
 
@@ -176,7 +182,8 @@ public class Ejercicios extends AppCompatActivity {
         isPlaying = false;
         videoView.stopPlayback();
     }
-
+/*
+    // SACANDO LA BARRA DE PROGRESO MANUAL
     public class videoProgress2 extends AsyncTask<Void, Integer, Void>{
 
 
@@ -203,7 +210,7 @@ public class Ejercicios extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-               // currentProgress.setProgress(values[0]);
+            // currentProgress.setProgress(values[0]);
             try {
 
                 int currentPercent = values[0] * 100/duration;
@@ -222,6 +229,6 @@ public class Ejercicios extends AppCompatActivity {
 
 
         }
-    }
+    }*/
 
 }

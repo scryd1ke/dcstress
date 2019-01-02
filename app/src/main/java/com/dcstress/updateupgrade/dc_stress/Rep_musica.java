@@ -52,9 +52,13 @@ public class Rep_musica extends AppCompatActivity {
     }
 
     public void stop (View view){
-        mp.stop();
-        mp = null;
-        Toast.makeText(this, "Stop", Toast.LENGTH_SHORT).show();
+        if (mp !=null) {
+            mp.stop();
+            mp = MediaPlayer.create(getApplication(), canciones[index] );
+           // mp.release();
+            Toast.makeText(this, "Stop", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
@@ -77,5 +81,25 @@ public class Rep_musica extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        try{
+            mp.stop();
+            mp.reset();
+        }catch (Exception ex){
+
+        }
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        try{
+            mp.stop();
+            mp.reset();
+        }catch (Exception ex){
+
+        }
+    }
 }
 
